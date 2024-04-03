@@ -1,8 +1,7 @@
 const Hero = () => {
     return (
         <>
-            <h1 className="text-center text-4xl m-1">20th Century Boys</h1>
-            <img className="brightness-50 sepia" src="./heroboys.png" alt="imágen de fondo" />
+            <h1 className="text-center text-white py-5 text-4xl m-1 bg-heroboys bg-cover h-screen">20th Century Boys</h1>
         </>
     )
 }
