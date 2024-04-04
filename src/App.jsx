@@ -1,15 +1,15 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Capitulo from './components/Capitulo';
 import './App.css'
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Capitulos from './components/Capitulos'
 import Hero from './components/Hero'
 import Contacto from './components/Contacto'
-import Cap1 from './components/Cap1'
-import Cap2 from './components/Cap2'
-
+import Capitulos from './components/Capitulos';
 
 function App() {
+
+  const capitulos = Array.from({ length: 22 }, (_, i) => i + 1);
 
   return (
     <>
@@ -18,13 +18,14 @@ function App() {
         <Routes>
           <Route path='/' element={<Hero />} />
           <Route path='/Capitulos' element={<Capitulos />} />
-          <Route path='/Cap1' element={<Cap1 />} />
-          <Route path='/Cap2' element={<Cap2 />} />
+          {capitulos.map((capitulo) => (
+            <Route path={`/Cap${capitulo}`} element={<Capitulo numero={capitulo} />} key={capitulo} />
+          ))}
           <Route path='/Contacto' element={<Contacto />} />
         </Routes>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App;
