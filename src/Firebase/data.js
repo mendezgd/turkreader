@@ -3,12 +3,12 @@ import { initializeApp, getApps } from "firebase/app";
 import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDZJHyUQGr9p_bFd3wSLV3PUBg3hd3_GiM",
-    authDomain: "poxreader.firebaseapp.com",
-    projectId: "poxreader",
-    storageBucket: "poxreader.appspot.com",
-    messagingSenderId: "407884474986",
-    appId: "1:407884474986:web:832d2ac00757e08bbff813"
+    apiKey: import.meta.env.VITE_APP_API_KEY,
+    authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_APP_PROJECT_ID,
+    storageBucket: import.meta.VITE_APP_STORAGE_BUCKET,
+    messagingSenderId: import.meta.VITE_APP_MESSAGING_SENDER_ID,
+    appId: import.meta.VITE_APP_APP_ID
 };
 let app;
 
