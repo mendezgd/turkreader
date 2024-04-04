@@ -9,7 +9,7 @@ const Capitulos = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-items-center">
                 {capitulos.map((capitulo) => (
                     <Link to={`/Cap${capitulo}`} key={capitulo}>
-                        <button className="bg-heroboys bg-cover sepia hover:sepia-0 text-3xl h-36 w-64 text-yellow-50 text-center mb-1 border-black rounded-lg">
+                        <button className="bg-heroboys bg-cover sepia hover:sepia-0 delay-100 text-3xl h-36 w-72 text-white text-center mb-1 rounded-lg">
                             Capítulo {capitulo}
                         </button>
                     </Link>
