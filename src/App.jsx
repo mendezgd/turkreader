@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Capitulo from './components/Capitulo';
-import './App.css'
-import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Contacto from './components/Contacto'
+import './App.css';
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Contacto from './components/Contacto';
 import Capitulos from './components/Capitulos';
 import Footer from './components/Footer';
 
