@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { storage } from '../Firebase/data';
 import { ref, listAll, getDownloadURL } from "firebase/storage";
+import Loader from './Loader';
 
 function Capitulo({ numero }) {
     const [imageUrls, setImageUrls] = useState([]);
@@ -22,11 +23,7 @@ function Capitulo({ numero }) {
     return (
         <section className="flex flex-col items-center">
             {loading ? (
-                <div className="flex flex-row gap-2">
-                    <div className="w-2 h-2 rounded-full bg-blue-700 animate-bounce"></div>
-                    <div className="w-2 h-2 rounded-full bg-blue-700 animate-bounce [animation-delay:-.3s]"></div>
-                    <div className="w-2 h-2 rounded-full bg-blue-700 animate-bounce [animation-delay:-.5s]"></div>
-                </div>
+                <Loader />
             ) : (
                 imageUrls.map((url, index) => (
                     <img className="p-5 w-fit h-fit" key={index} src={url} alt={`Imagen del capítulo ${numero}`} />
