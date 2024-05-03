@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Contacto from './components/Contacto'
 import Capitulos from './components/Capitulos';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           ))}
           <Route path='/Contacto' element={<Contacto />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

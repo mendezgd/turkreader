@@ -8,7 +8,8 @@ const Navbar = () => {
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="./logo.png" className="h-10 " alt="turk Logo" />
+                    {/* <img src="./logo.png" className="h-10 " alt="turk Logo" /> */}
+                    <img className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src="./logo.png" alt="Logo" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">turK Reader</span>
                 </Link>
                 <button
