@@ -30,7 +30,7 @@ const Capitulos = () => {
 
     return (
         <>
-            <h1 className="text-center text-4xl m-5">Capítulos</h1>
+            <h1 className="text-center text-4xl p-5 dark:bg-slate-700 dark:text-white">Capítulos</h1>
             <section className="flex flex-col items-center dark:bg-slate-800">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-items-center">
                     {loading ? (
@@ -39,7 +39,7 @@ const Capitulos = () => {
                         portadas.map(({ capitulo, url }) => (
                             <Link target='_blank' to={`/Cap${capitulo}`} key={capitulo}>
                                 <div className="flex flex-col items-center m-4">
-                                    <img loading="lazy" className="h-96 w-auto" src={url} alt={`Portada del Capítulo ${capitulo}`} />
+                                    <img loading="lazy" className="h-auto w-auto rounded" src={url} alt={`Portada del Capítulo ${capitulo}`} />
                                 </div>
                             </Link>
                         )))
