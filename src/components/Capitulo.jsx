@@ -26,7 +26,7 @@ function Capitulo({ numero }) {
                 <Loader />
             ) : (
                 imageUrls.map((url, index) => (
-                    <img className="p-5 w-fit h-fit" key={index} src={url} alt={`Imagen del capítulo ${numero}`} />
+                    <img loading='lazy' className="p-5 w-fit h-fit" key={index} src={url} alt={`Imagen del capítulo ${numero}`} />
                 ))
             )}
         </section>

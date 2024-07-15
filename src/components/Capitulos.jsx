@@ -37,12 +37,9 @@ const Capitulos = () => {
                         <Loader />
                     ) : (
                         portadas.map(({ capitulo, url }) => (
-                            <Link to={`/Cap${capitulo}`} key={capitulo}>
+                            <Link target='_blank' to={`/Cap${capitulo}`} key={capitulo}>
                                 <div className="flex flex-col items-center m-4">
-                                    <img className="h-72 w-72 object-cover" src={url} alt={`Portada del Capítulo ${capitulo}`} />
-                                    <button className="bg-gray-700 text-3xl h-12 w-72 text-white text-center">
-                                        Capítulo {capitulo}
-                                    </button>
+                                    <img loading="lazy" className="h-96 w-auto" src={url} alt={`Portada del Capítulo ${capitulo}`} />
                                 </div>
                             </Link>
                         )))
@@ -52,4 +49,4 @@ const Capitulos = () => {
         </>
     )
 }
-export default Capitulos;
+export default Capitulos;  
