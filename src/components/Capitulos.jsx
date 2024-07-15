@@ -7,22 +7,33 @@ import Loader from './Loader';
 const Capitulos = () => {
     const [portadas, setPortadas] = useState([]);
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const fetchPortadas = async () => {
-            const portadasUrls = [];
-            for (let i = 1; i <= 22; i++) {
-                const pathReference = ref(storage, `gs://poxreader.appspot.com/Manga/CAP${i}`);
-                const res = await listAll(pathReference);
-                if (res.items.length > 0) {
-                    const firstImageRef = res.items.find(item => item.name.endsWith('.jpg') || item.name.endsWith('.jpeg') || item.name.endsWith('.png'));
-                    if (firstImageRef) {
-                        const url = await getDownloadURL(firstImageRef);
-                        portadasUrls.push({ capitulo: i, url });
-                    }
+            try {
+                const portadasPromises = [];
+                for (let i = 1; i <= 22; i++) {
+                    portadasPromises.push((async () => {
+                        const pathReference = ref(storage, `gs://poxreader.appspot.com/Manga/CAP${i}`);
+                        const res = await listAll(pathReference);
+                        if (res.items.length > 0) {
+                            const firstImageRef = res.items.find(item => item.name.endsWith('.jpg') || item.name.endsWith('.jpeg') || item.name.endsWith('.png'));
+                            if (firstImageRef) {
+                                const url = await getDownloadURL(firstImageRef);
+                                return { capitulo: i, url };
+                            }
+                        }
+                        return null;
+                    })());
                 }
+
+                const portadasUrls = await Promise.all(portadasPromises);
+                setPortadas(portadasUrls.filter(p => p !== null));
+            } catch (error) {
+                console.error('Error fetching portadas:', error);
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
-            setPortadas(portadasUrls);
         };
 
         fetchPortadas();
@@ -42,11 +53,12 @@ const Capitulos = () => {
                                     <img loading="lazy" className="h-auto w-auto rounded" src={url} alt={`Portada del Capítulo ${capitulo}`} />
                                 </div>
                             </Link>
-                        )))
-                    }
+                        ))
+                    )}
                 </div>
             </section>
         </>
-    )
-}
-export default Capitulos;  
+    );
+};
+
+export default Capitulos;
