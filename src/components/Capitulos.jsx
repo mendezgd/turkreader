@@ -31,7 +31,7 @@ const Capitulos = () => {
     return (
         <>
             <h1 className="text-center text-4xl m-5">Capítulos</h1>
-            <section className="flex flex-col items-center">
+            <section className="flex flex-col items-center dark:bg-slate-800">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-items-center">
                     {loading ? (
                         <Loader />

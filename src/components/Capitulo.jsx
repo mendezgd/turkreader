@@ -21,7 +21,7 @@ function Capitulo({ numero }) {
     }, [numero]);
 
     return (
-        <section className="flex flex-col items-center">
+        <section className="flex flex-col items-center dark:bg-slate-800">
             {loading ? (
                 <Loader />
             ) : (
