@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import Contacto from './components/Contacto';
 import Capitulos from './components/Capitulos';
 import Footer from './components/Footer';
-import { DarkModeProvider } from './components/DarkModeContext';
+import { DarkModeProvider } from './components/UseContext';
 
 function App() {
 
