@@ -47,13 +47,17 @@ const Capitulos = () => {
                     {loading ? (
                         <Loader />
                     ) : (
-                        portadas.map(({ capitulo, url }) => (
-                            <Link target='_blank' to={`/Cap${capitulo}`} key={capitulo}>
-                                <div className="flex flex-col items-center m-4">
-                                    <img loading="lazy" className="h-auto w-auto rounded" src={url} alt={`Portada del Capítulo ${capitulo}`} />
-                                </div>
-                            </Link>
-                        ))
+                        portadas && portadas.length > 0 ? (
+                            portadas.map(({ capitulo, url }) => (
+                                <Link target='_blank' to={`/Cap${capitulo}`} key={capitulo}>
+                                    <div className="flex flex-col items-center m-4">
+                                        <img loading="lazy" className="h-auto w-auto rounded" src={url} alt={`Portada del Capítulo ${capitulo}`} />
+                                    </div>
+                                </Link>
+                            ))
+                        ) : (
+                            <p>No se encontraron portadas disponibles.</p>
+                        )
                     )}
                 </div>
             </section>
