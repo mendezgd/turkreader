@@ -10,7 +10,7 @@ function Capitulo({ numero }) {
     useEffect(() => {
         const fetchImages = async () => {
             setLoading(true);
-            const pathReference = ref(storage, `gs://poxreader.appspot.com/Manga/CAP${numero}`);
+            const pathReference = ref(storage, `Manga/CAP${numero}`);
             const res = await listAll(pathReference);
             const urls = await Promise.all(res.items.map((itemRef) => getDownloadURL(itemRef)));
             setImageUrls(urls);
