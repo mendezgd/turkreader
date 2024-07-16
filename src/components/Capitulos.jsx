@@ -7,33 +7,22 @@ import Loader from './Loader';
 const Capitulos = () => {
     const [portadas, setPortadas] = useState([]);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         const fetchPortadas = async () => {
-            try {
-                const portadasPromises = [];
-                for (let i = 1; i <= 22; i++) {
-                    portadasPromises.push((async () => {
-                        const pathReference = ref(storage, `gs://poxreader.appspot.com/Manga/CAP${i}`);
-                        const res = await listAll(pathReference);
-                        if (res.items.length > 0) {
-                            const firstImageRef = res.items.find(item => item.name.endsWith('.jpg') || item.name.endsWith('.jpeg') || item.name.endsWith('.png'));
-                            if (firstImageRef) {
-                                const url = await getDownloadURL(firstImageRef);
-                                return { capitulo: i, url };
-                            }
-                        }
-                        return null;
-                    })());
+            const portadasUrls = [];
+            for (let i = 1; i <= 22; i++) {
+                const pathReference = ref(storage, `gs://poxreader.appspot.com/Manga/CAP${i}`);
+                const res = await listAll(pathReference);
+                if (res.items.length > 0) {
+                    const firstImageRef = res.items.find(item => item.name.endsWith('.jpg') || item.name.endsWith('.jpeg') || item.name.endsWith('.png'));
+                    if (firstImageRef) {
+                        const url = await getDownloadURL(firstImageRef);
+                        portadasUrls.push({ capitulo: i, url });
+                    }
                 }
-
-                const portadasUrls = await Promise.all(portadasPromises);
-                setPortadas(portadasUrls.filter(p => p !== null));
-            } catch (error) {
-                console.error('Error fetching portadas:', error);
-            } finally {
-                setLoading(false);
             }
+            setLoading(false);
+            setPortadas(portadasUrls);
         };
 
         fetchPortadas();
@@ -41,24 +30,26 @@ const Capitulos = () => {
 
     return (
         <>
-            <h1 className="text-center text-4xl p-5 dark:bg-slate-700 dark:text-white">Capítulos</h1>
-            <section className="flex flex-col items-center dark:bg-slate-800">
+            <h1 className="text-center text-4xl m-5">Capítulos</h1>
+            <section className="flex flex-col items-center">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-items-center">
                     {loading ? (
                         <Loader />
                     ) : (
                         portadas.map(({ capitulo, url }) => (
-                            <Link target='_blank' to={`/Cap${capitulo}`} key={capitulo}>
+                            <Link to={`/Cap${capitulo}`} key={capitulo}>
                                 <div className="flex flex-col items-center m-4">
-                                    <img loading="lazy" className="h-auto w-auto rounded" src={url} alt={`Portada del Capítulo ${capitulo}`} />
+                                    <img className="h-72 w-72 object-cover" src={url} alt={`Portada del Capítulo ${capitulo}`} />
+                                    <button className="bg-gray-700 text-3xl h-12 w-72 text-white text-center">
+                                        Capítulo {capitulo}
+                                    </button>
                                 </div>
                             </Link>
-                        ))
-                    )}
+                        )))
+                    }
                 </div>
             </section>
         </>
-    );
-};
-
+    )
+}
 export default Capitulos;
