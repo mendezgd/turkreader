@@ -1,42 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { storage } from '../Firebase/data';
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import portadas from './Portadas'; // Asegúrate de que la ruta sea correcta
 import Loader from './Loader';
 
 const Capitulos = () => {
-    const [portadas, setPortadas] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchPortadas = async () => {
-            try {
-                const portadasPromises = [];
-                for (let i = 1; i <= 22; i++) {
-                    portadasPromises.push((async () => {
-                        const pathReference = ref(storage, `gs://poxreader.appspot.com/Manga/CAP${i}`);
-                        const res = await listAll(pathReference);
-                        if (res.items.length > 0) {
-                            const firstImageRef = res.items.find(item => item.name.endsWith('.jpg') || item.name.endsWith('.jpeg') || item.name.endsWith('.png'));
-                            if (firstImageRef) {
-                                const url = await getDownloadURL(firstImageRef);
-                                return { capitulo: i, url };
-                            }
-                        }
-                        return null;
-                    })());
-                }
+        console.log("Portadas importadas:", portadas); // Verifica que las portadas se están importando correctamente
 
-                const portadasUrls = await Promise.all(portadasPromises);
-                setPortadas(portadasUrls.filter(p => p !== null));
-            } catch (error) {
-                console.error('Error fetching portadas:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        // Simulamos una pequeña carga para la experiencia de usuario
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 500);
 
-        fetchPortadas();
+        // Limpiar el temporizador al desmontar el componente
+        return () => clearTimeout(timer);
     }, []);
 
     return (
