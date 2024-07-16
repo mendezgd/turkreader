@@ -32,7 +32,10 @@ const Capitulos = () => {
             } catch (error) {
                 console.error('Error fetching portadas:', error);
             } finally {
-                setLoading(false);
+                // Simular carga con un timeout de 5 segundos
+                setTimeout(() => {
+                    setLoading(false);
+                }, 5000); // 5000 milisegundos = 5 segundos
             }
         };
 
