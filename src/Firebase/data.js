@@ -10,14 +10,10 @@ const firebaseConfig = {
     messagingSenderId: import.meta.VITE_APP_MESSAGING_SENDER_ID,
     appId: import.meta.VITE_APP_APP_ID
 };
-let app;
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
 
-if (!getApps().length) {
-    app = initializeApp(firebaseConfig);
-} else {
-    app = getApps()[0];
-}
-
+// Inicializar Storage
 const storage = getStorage(app);
 
 export { storage };
