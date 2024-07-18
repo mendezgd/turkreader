@@ -7,11 +7,17 @@ const Navbar = () => {
     const { darkMode, toggleDarkMode } = useDarkMode();
 
     return (
-        <nav className="sticky top-0 bg-slate-200 border-gray-200 dark:bg-gray-950">
+        <nav className="sticky top-0 bg-slate-200 border-gray-200 dark:bg-slate-800">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src="./logo.png" alt="Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">turK Reader</span>
+                    <div className="group relative flex justify-center items-center text-zinc-600 text-sm font-bold">
+                        <div className="absolute opacity-0 group-hover:opacity-100 group-hover:-translate-y-[150%] -translate-y-[300%] duration-500 group-hover:delay-500 skew-y-[20deg] group-hover:skew-y-0 shadow-md">
+                        </div>
+                        <div className="shadow-md flex items-center group-hover:gap-2 bg-gradient-to-br from-slate-200 to-slate-300 dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-900 p-3 rounded-full cursor-pointer duration-300">
+                            <img className="w-10 h-10" src="./logo.png" alt="Logo" />
+                            <span className="text-[0px] group-hover:text-sm duration-300 dark:text-white">turK Reader</span>
+                        </div>
+                    </div>
                 </Link>
                 <button
                     data-collapse-toggle="navbar-default"
@@ -43,7 +49,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <button
-                                className={`${darkMode ? 'bg-gray-950' : 'bg-gray-200'}`}
+                                className={`${darkMode ? 'bg-gray-800' : 'bg-gray-200'}`}
                                 onClick={toggleDarkMode}
                             >
                                 {darkMode ? '🌙' : '☀️'}

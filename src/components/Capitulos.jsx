@@ -15,8 +15,7 @@ const Capitulos = () => {
 
     return (
         <>
-            <h1 className="text-center text-4xl p-5 dark:bg-slate-700 dark:text-white">Capítulos</h1>
-            <section className="flex flex-col items-center dark:bg-slate-800">
+            <section className="flex flex-col items-center dark:bg-slate-900">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-items-center">
                     {loading ? (
                         <Loader />
