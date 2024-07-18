@@ -7,13 +7,13 @@ const Navbar = () => {
     const { darkMode, toggleDarkMode } = useDarkMode();
 
     return (
-        <nav className="sticky top-0 bg-slate-200 border-gray-200 dark:bg-slate-800">
+        <nav className="bg-slate-200 border-gray-200 dark:bg-slate-800">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <div className="group relative flex justify-center items-center text-zinc-600 text-sm font-bold">
                         <div className="absolute opacity-0 group-hover:opacity-100 group-hover:-translate-y-[150%] -translate-y-[300%] duration-500 group-hover:delay-500 skew-y-[20deg] group-hover:skew-y-0 shadow-md">
                         </div>
-                        <div className="shadow-md flex items-center group-hover:gap-2 bg-gradient-to-br from-slate-200 to-slate-300 dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-900 p-3 rounded-full cursor-pointer duration-300">
+                        <div className="shadow-md flex items-center group-hover:gap-2 bg-gradient-to-br from-slate-200 to-slate-300 dark:bg-gradient-to-br dark:from-slate-500 dark:to-slate-900 p-3 rounded-full cursor-pointer duration-300">
                             <img className="w-10 h-10" src="./logo.png" alt="Logo" />
                             <span className="text-[0px] group-hover:text-sm duration-300 dark:text-white">turK Reader</span>
                         </div>
@@ -42,7 +42,7 @@ const Navbar = () => {
                             <Link to="/" className="block py-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Inicio</Link>
                         </li>
                         <li>
-                            <Link to="/Capitulos" className="block py-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Capítulos</Link>
+                            <Link to="/Capitulos" className="block py-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">20th Century Boys</Link>
                         </li>
                         <li>
                             <Link to={"mailto:mendezgd88@gmail.com"} className="block py-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contacto</Link>

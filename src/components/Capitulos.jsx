@@ -22,11 +22,11 @@ const Capitulos = () => {
                     ) : (
                         portadas.map((portada) => (
                             <Link key={portada.capitulo} to={`/Cap${portada.capitulo}`}>
-                                <div className="flex flex-col items-center m-4">
+                                <div className="flex flex-col items-center m-6 bg-slate-200 max-w-[300px] rounded-xl hover:bg-slate-500 dark:bg-slate-600 dark:hover:bg-slate-800 hover:scale-105 duration-500 p-2">
                                     <img
                                         src={portada.url}
                                         alt={`Portada del capítulo ${portada.capitulo}`}
-                                        className="portada-img h-96 w-72 rounded"
+                                        className="portada-img h-max w-auto rounded"
                                     />
                                 </div>
                             </Link>
