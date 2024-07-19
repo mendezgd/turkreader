@@ -21,15 +21,20 @@ function Capitulo({ numero }) {
     }, [numero]);
 
     return (
-        <section className="flex flex-col items-center dark:bg-slate-900">
-            {loading ? (
-                <Loader />
-            ) : (
-                imageUrls.map((url, index) => (
-                    <img loading='lazy' className="p-5 w-fit h-fit" key={index} src={url} alt={`Imagen del capítulo ${numero}`} />
-                ))
-            )}
-        </section>
+        <>
+            <section className="flex flex-col items-center dark:bg-slate-900">
+
+                {loading ? (
+                    <Loader />
+                ) : (
+                    imageUrls.map((url, index) => (
+
+                        <img loading='lazy' className="p-1 w-fit h-fit" key={index} src={url} alt={`Imagen del capítulo ${numero}`} />
+
+                    ))
+                )}
+            </section>
+        </>
     );
 }
 
