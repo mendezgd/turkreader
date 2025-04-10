@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { storage } from '../Firebase/data';
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 import Loader from './Loader';
+import PropTypes from 'prop-types';
 
 function Capitulo({ numero }) {
     const [imageUrls, setImageUrls] = useState([]);
@@ -23,19 +24,29 @@ function Capitulo({ numero }) {
     return (
         <>
             <section className="flex flex-col items-center dark:bg-slate-900">
-
                 {loading ? (
                     <Loader />
                 ) : (
                     imageUrls.map((url, index) => (
-
-                        <img loading='lazy' className="p-1 w-fit h-fit" key={index} src={url} alt={`Imagen del capítulo ${numero}`} />
-
+                        <img
+                            loading="lazy"
+                            className="p-1 w-fit h-fit"
+                            key={index}
+                            src={url}
+                            alt={`Imagen del capítulo ${numero}`}
+                        />
                     ))
                 )}
             </section>
         </>
     );
 }
+
+Capitulo.propTypes = {
+    numero: PropTypes.number.isRequired,
+};
+Capitulo.propTypes = {
+    numero: PropTypes.number.isRequired,
+};
 
 export default Capitulo;
